@@ -1,30 +1,55 @@
 <!DOCTYPE html>
+<html>
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PenPal Post</title>
     <link rel="stylesheet" href="styles.css">
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init({
+                publicKey: "uNI2cxUcdxtTH7ij3",
+            });
+        })();
+    </script>
+
+    <script src="index.js"></script>
 </head>
+
 <body>
     <div class="form-container">
         <h1>Send a Letter</h1>
-        <form action="/send" method="POST">
+        <!-- Added id="sendLetterForm" to the form -->
+        <form id="sendLetterForm" method="POST">
+            <label for="senderName">Your Name:</label>
+            <input type="text" id="senderName" name="senderName" required placeholder="Enter your name">
+
             <label for="senderEmail">Your Email:</label>
             <input type="email" id="senderEmail" name="senderEmail" required placeholder="Enter your email">
-
-            <label for="recipientEmail">Recipient's Email:</label>
-            <input type="email" id="recipientEmail" name="recipientEmail" required placeholder="Enter recipient's email">
 
             <label for="senderZip">Your Zip Code:</label>
             <input type="text" id="senderZip" name="senderZip" required placeholder="Enter your zip code">
 
+            <label for="recipientName">Recipient's Name:</label>
+            <input type="text" id="recipientName" name="recipientName" required placeholder="Enter recipient's name">
+
+            <label for="recipientEmail">Recipient's Email:</label>
+            <input type="email" id="recipientEmail" name="recipientEmail" required
+                placeholder="Enter recipient's email">
+
             <label for="recipientZip">Recipient's Zip Code:</label>
             <input type="text" id="recipientZip" name="recipientZip" required placeholder="Enter recipient's zip code">
 
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" required placeholder="Write your letter here..."></textarea>
+            <label for="letterContent">Your Letter:</label>
+            <textarea id="letterContent" name="letterContent" required
+                placeholder="Write something nice here..."></textarea>
 
             <button type="submit">Send Letter</button>
         </form>
     </div>
 </body>
+
 </html>
