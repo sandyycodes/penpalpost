@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PenPal Post</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="form-container">
+        <h1>Send a Letter</h1>
+        <form action="/send" method="POST">
+            <label for="senderEmail">Your Email:</label>
+            <input type="email" id="senderEmail" name="senderEmail" required placeholder="Enter your email">
+
+            <label for="recipientEmail">Recipient's Email:</label>
+            <input type="email" id="recipientEmail" name="recipientEmail" required placeholder="Enter recipient's email">
+
+            <label for="senderZip">Your Zip Code:</label>
+            <input type="text" id="senderZip" name="senderZip" required placeholder="Enter your zip code">
+
+            <label for="recipientZip">Recipient's Zip Code:</label>
+            <input type="text" id="recipientZip" name="recipientZip" required placeholder="Enter recipient's zip code">
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required placeholder="Write your letter here..."></textarea>
+
+            <button type="submit">Send Letter</button>
+        </form>
+    </div>
+</body>
+</html>
