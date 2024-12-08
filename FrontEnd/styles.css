@@ -60,7 +60,12 @@ button:hover {
 }
 
 #distanceResult {
-    text-align: center;
     margin-top: 20px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
     color: #333;
 }
+

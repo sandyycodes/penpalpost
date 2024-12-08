@@ -15,58 +15,43 @@ document.addEventListener('DOMContentLoaded', function () {
         const recipientZip = document.getElementById('recipientZip').value.trim();
         const letterContent = document.getElementById('letterContent').value;
 
-        // Data to send via EmailJS
-        const emailData = {
-            sender_name: senderName,
-            sender_email: senderEmail,
-            sender_zip: senderZip,
-            recipient_name: recipientName,
-            recipient_email: recipientEmail,
-            recipient_zip: recipientZip,
-            letter_content: letterContent,
-        };
+        const distanceData = { senderZip, recipientZip };
 
         try {
-            // Send email using EmailJS
+            // Fetch distance and estimated time from the backend
+            const response = await fetch('http://localhost:3000/get-distance', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(distanceData),
+            });
+
+            const data = await response.json();
+            const distance = data.distance;
+            const estimatedTime = data.estimatedTime;
+
+            // Display the calculated distance and estimated time
+            document.getElementById('distanceResult').textContent = 
+                `The mail will travel approximately ${distance} and may take an estimated ${estimatedTime} to arrive.`;
+
+            // Send the email with the distance and estimated time included
+            const emailData = {
+                sender_name: senderName,
+                sender_email: senderEmail,
+                sender_zip: senderZip,
+                recipient_name: recipientName,
+                recipient_email: recipientEmail,
+                recipient_zip: recipientZip,
+                letter_content: letterContent,
+                distance,
+                estimated_time: estimatedTime,
+            };
+
             const emailResponse = await emailjs.send('service_ge2rvyx', 'template_b0xlp7x', emailData);
             console.log('Email sent successfully!', emailResponse);
             alert('Your letter has been sent successfully!');
         } catch (error) {
             console.error('Error during form submission:', error);
             alert('There was an error sending your letter. Please try again later.');
-        }
-
-        // Fetch distance from the backend
-        try {
-
-            const response = await fetch('http://localhost:3000/get-distance', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ senderZip, recipientZip })
-            });
-
-            // const response = await fetch('/get-distance', {
-            //     method: 'POST',
-            //     headers: {
-            //         'Content-Type': 'application/json'
-            //     },
-            //     body: JSON.stringify({ senderZip, recipientZip })
-            // });
-
-            const data = await response.json();
-
-            if (data.error) {
-                console.error('Error:', data.error);
-                alert('There was an issue calculating the distance.');
-            } else {
-                console.log('Distance:', data.distance);
-                alert('Distance: ' + data.distance);
-            }
-        } catch (error) {
-            console.error('Error calculating distance:', error);
-            document.getElementById('distanceResult').textContent = 'Error calculating distance.';
         }
     });
 });
