@@ -15,7 +15,12 @@ const googleMapsApiKey = 'AIzaSyD9lpBtU1XK3TCTgEsBqL70XCKRrCBcnEA'; // Replace w
 
 // Serve the index.html file
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
+    res.sendFile(path.join(__dirname, 'Frontend', 'index.html'));
+});
+
+// Serve the send-letter.html file
+app.get('/send-letter', (req, res) => {
+    res.sendFile(path.join(__dirname, 'Frontend', 'send-letter.html'));
 });
 
 // Endpoint to calculate distance and estimated time
