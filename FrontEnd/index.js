@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
-    emailjs.init("uNI2cxUcdxtTH7ij3");
+    //emailjs.init("uNI2cxUcdxtTH7ij3");
+    emailjs.init("IWYidU1PxGPPkjelA");
 
     document.getElementById('sendLetterForm').addEventListener('submit', function(event) {
         event.preventDefault();
@@ -20,7 +21,8 @@ document.addEventListener('DOMContentLoaded', function() {
         };
       
         // Send email using EmailJS
-        emailjs.send('service_vxxz8dc', 'template_u24ohpm', emailData)
+        //emailjs.send('service_vxxz8dc', 'template_u24ohpm', emailData)
+        emailjs.send('service_ge2rvyx', 'template_b0xlp7x', emailData)
           .then(function(response) {
             console.log('Sent email successfully!', response);
             alert('Your letter has been sent!');
