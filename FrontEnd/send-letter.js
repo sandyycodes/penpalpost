@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Initialize EmailJS
-    emailjs.init("IWYidU1PxGPPkjelA"); // Replace with your actual EmailJS user ID
+    emailjs.init("IWYidU1PxGPPkjelA");
 
     // Form submission handler
     document.getElementById('sendLetterForm').addEventListener('submit', async function (event) {
-        event.preventDefault(); // Prevent form reload on submission
+        event.preventDefault();
 
         // Collect form inputs
         const senderName = document.getElementById('senderName').value;
@@ -33,11 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const distance = data.distance;
             const estimatedTime = data.estimatedTime;
 
-            // Display the calculated distance and estimated time
-            document.getElementById('distanceResult').textContent =
-                `The mail will travel approximately ${distance} and may take an estimated ${estimatedTime} to arrive.`;
-
-            // Send the email with the calculated data
+            // Prepare email data
             const emailData = {
                 sender_name: senderName,
                 sender_email: senderEmail,
@@ -50,9 +46,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 estimated_time: estimatedTime,
             };
 
+            // Send email via EmailJS
             const emailResponse = await emailjs.send('service_ge2rvyx', 'template_b0xlp7x', emailData);
             console.log('Email sent successfully!', emailResponse);
-            alert('Your letter has been sent successfully!');
+
+            // Redirect to confirmation page with query parameters
+            window.location.href = `confirmation.html?senderName=${encodeURIComponent(senderName)}&recipientName=${encodeURIComponent(recipientName)}&recipientEmail=${encodeURIComponent(recipientEmail)}&distance=${encodeURIComponent(distance)}&estimatedTime=${encodeURIComponent(estimatedTime)}`;
         } catch (error) {
             console.error('Error during form submission:', error.message);
             alert('There was an error processing your request. Please try again later.');
@@ -61,13 +60,14 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+
 // document.addEventListener('DOMContentLoaded', function () {
 //     // Initialize EmailJS
-//     emailjs.init("IWYidU1PxGPPkjelA");
+//     emailjs.init("IWYidU1PxGPPkjelA"); // Replace with your actual EmailJS user ID
 
 //     // Form submission handler
 //     document.getElementById('sendLetterForm').addEventListener('submit', async function (event) {
-//         event.preventDefault(); // Prevent form submission reload
+//         event.preventDefault(); // Prevent form reload on submission
 
 //         // Collect form inputs
 //         const senderName = document.getElementById('senderName').value;
@@ -81,22 +81,26 @@ document.addEventListener('DOMContentLoaded', function () {
 //         const distanceData = { senderZip, recipientZip };
 
 //         try {
-//             // Fetch distance and estimated time from the backend
+//             // Fetch distance and estimated time from the server
 //             const response = await fetch('http://localhost:3000/get-distance', {
 //                 method: 'POST',
 //                 headers: { 'Content-Type': 'application/json' },
 //                 body: JSON.stringify(distanceData),
 //             });
 
+//             if (!response.ok) {
+//                 throw new Error('Failed to fetch distance data from the server');
+//             }
+
 //             const data = await response.json();
 //             const distance = data.distance;
 //             const estimatedTime = data.estimatedTime;
 
 //             // Display the calculated distance and estimated time
-//             document.getElementById('distanceResult').textContent = 
+//             document.getElementById('distanceResult').textContent =
 //                 `The mail will travel approximately ${distance} and may take an estimated ${estimatedTime} to arrive.`;
 
-//             // Send the email with the distance and estimated time included
+//             // Send the email with the calculated data
 //             const emailData = {
 //                 sender_name: senderName,
 //                 sender_email: senderEmail,
@@ -113,8 +117,9 @@ document.addEventListener('DOMContentLoaded', function () {
 //             console.log('Email sent successfully!', emailResponse);
 //             alert('Your letter has been sent successfully!');
 //         } catch (error) {
-//             console.error('Error during form submission:', error);
-//             alert('There was an error sending your letter. Please try again later.');
+//             console.error('Error during form submission:', error.message);
+//             alert('There was an error processing your request. Please try again later.');
 //         }
 //     });
 // });
+

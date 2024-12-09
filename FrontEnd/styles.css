@@ -1,14 +1,67 @@
+/* General Body Styles */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     margin: 0;
     padding: 0;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
     height: 100vh;
 }
 
+/* Global Navigation Bar Styles */
+.navbar {
+    width: 100%;
+    background-color: #f4f4f4; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-sizing: border-box; /* Ensures padding is included in width calculation */
+    white-space: nowrap; /* Prevents wrapping of content */
+    overflow: hidden; /* Prevents overflow issues */
+}
+
+/* Navbar Logo */
+.navbar-logo a {
+    color: rgb(0, 0, 0);
+    font-size: 24px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Navbar Links Container */
+.navbar-links {
+    display: flex;
+    gap: 50px; /* Adjusted gap to make "Send a Letter" closer to "Mailbox" */
+    justify-content: flex-end;
+    flex-wrap: nowrap; /* Prevents links from wrapping to the next line */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Navbar Links */
+.navbar-links a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.navbar-links a:hover {
+    text-decoration: underline;
+}
+
+/* Adjust body padding to account for the fixed navbar */
+body {
+    padding-top: 60px; /* Adjust according to navbar height */
+}
+
+/* Form Container Styles */
 .form-container {
     background-color: #ffffff;
     padding: 20px;
@@ -16,6 +69,7 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 600px;
+    margin-top: 20px; /* Add margin to prevent overlap with navbar */
 }
 
 .form-container h1 {
@@ -55,4 +109,56 @@ button:hover {
 textarea {
     resize: vertical;
     min-height: 100px;
+}
+
+/* Confirmation Page Styles */
+#confirmationMessage {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    margin-top: 20px; /* Margin to prevent overlap with navbar */
+}
+
+#confirmationMessage h2 {
+    margin-bottom: 20px;
+}
+
+/* "Send Another Letter" Button */
+.send-another-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 4px;
+}
+
+.send-another-btn:hover {
+    background-color: #45a049;
+}
+
+/* Media Query for Smaller Screens */
+@media screen and (max-width: 600px) {
+    .navbar {
+        padding: 10px 15px;
+    }
+
+    .navbar-logo a {
+        font-size: 20px;
+    }
+
+    .navbar-links {
+        gap: 8px; /* Slightly reduce gap for smaller screens */
+    }
+
+    .navbar-links a {
+        font-size: 16px;
+    }
 }

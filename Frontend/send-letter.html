@@ -14,6 +14,17 @@
 </head>
 
 <body>
+    <!-- Global Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <a href="index.html">YourLogo</a> <!-- Replace with your logo or text -->
+        </div>
+        <div class="navbar-links">
+            <a href="send-letter.html">Send a Letter</a>
+            <a href="mailbox.html">Mailbox</a>
+        </div>
+    </nav>
+
     <div class="form-container">
         <h1>Send a Letter</h1>
         <form id="sendLetterForm" method="POST">
@@ -30,13 +41,15 @@
             <input type="text" id="recipientName" name="recipientName" required placeholder="Enter recipient's name">
 
             <label for="recipientEmail">Recipient's Email:</label>
-            <input type="email" id="recipientEmail" name="recipientEmail" required placeholder="Enter recipient's email">
+            <input type="email" id="recipientEmail" name="recipientEmail" required
+                placeholder="Enter recipient's email">
 
             <label for="recipientZip">Recipient's Zip Code:</label>
             <input type="text" id="recipientZip" name="recipientZip" required placeholder="Enter recipient's zip code">
 
             <label for="letterContent">Your Letter:</label>
-            <textarea id="letterContent" name="letterContent" required placeholder="Write something nice here..."></textarea>
+            <textarea id="letterContent" name="letterContent" required
+                placeholder="Write something nice here..."></textarea>
 
             <button type="submit">Send Letter</button>
         </form>

@@ -45,10 +45,18 @@ app.post('/get-distance', async (req, res) => {
             const distanceValue = response.data.rows[0].elements[0].distance.value; // Distance in meters
             const distanceMiles = (distanceValue / 1609.34).toFixed(2); // Convert to miles
 
-            // Calculate estimated time for mail delivery
-            const averageMailSpeed = 40; // Average speed of postal mail in miles per day
-            const estimatedDays = Math.ceil(distanceMiles / averageMailSpeed);
-            const estimatedTime = `${estimatedDays} day(s)`;
+            let estimatedTime;
+
+            if (distanceMiles >= 400) {
+                // If distance is greater than 400 miles, generate a random estimated time between 10 and 14 days
+                const randomDays = Math.floor(Math.random() * (14 - 10 + 1)) + 10;
+                estimatedTime = `${randomDays} day(s)`;
+            } else {
+                // Calculate estimated time normally
+                const averageMailSpeed = 40; // Average speed of postal mail in miles per day
+                const estimatedDays = Math.ceil(distanceMiles / averageMailSpeed);
+                estimatedTime = `${estimatedDays} day(s)`;
+            }
 
             console.log(`Calculated distance: ${distanceText}, Estimated Time: ${estimatedTime}`);
             res.json({ distance: distanceText, estimatedTime });
@@ -65,6 +73,7 @@ app.post('/get-distance', async (req, res) => {
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
+
 
 
 
