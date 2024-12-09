@@ -104,18 +104,53 @@ app.post('/save-letter', async (req, res) => {
     }
 });
 
-// Fetch letters
+// // Fetch letters
+// app.get('/get-letters', async (req, res) => {
+//     const { uuid } = req.query; // Get the uuid from the query string
+    
+//     if (!uuid) {
+//         return res.status(400).send('UUID is required');
+//     }
+    
+//     try {
+//         // Query the database to get letters based on the uuid
+//         //const letters = await LettersModel.find({ uuid: uuid });
+//         const letters = await collection.find({ recipientUUID: uuid }).toArray();
+
+        
+//         if (!letters) {
+//             return res.status(404).send('No letters found');
+//         }
+        
+//         res.status(200).json(letters);
+//     } catch (error) {
+//         res.status(500).send('Server error');
+//     }
+// });
 app.get('/get-letters', async (req, res) => {
-    const { uuid } = req.query;
-    if (!uuid) return res.status(400).json({ message: 'UUID is required' });
+    const { uuid } = req.query; // Get the uuid from the query string
+
+    if (!uuid) {
+        return res.status(400).send('UUID is required');
+    }
 
     try {
+        // Query the database to get letters based on the uuid (filter by recipientUUID)
         const letters = await collection.find({ recipientUUID: uuid }).toArray();
+
+        if (!letters || letters.length === 0) {
+            return res.status(404).send('No letters found');
+        }
+
         res.status(200).json(letters);
-    } catch {
-        res.status(500).json({ message: 'Error fetching letters' });
+    } catch (error) {
+        console.error('Error fetching letters:', error);
+        res.status(500).send('Server error');
     }
 });
+
+
+
 
 app.listen(port, () => console.log(`Server is running on http://localhost:${port}`));
 
