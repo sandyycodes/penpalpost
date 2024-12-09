@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const params = new URLSearchParams(window.location.search);
-    const letterId = params.get('id'); // Get the letter ID from the query parameters
+    const letterId = params.get('id');
 
     const fetchLetter = async () => {
         try {
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // Fetch the letter data based on the letter ID
+    // Fetch the letter data
     fetchLetter();
 
     // Go back to the mailbox
