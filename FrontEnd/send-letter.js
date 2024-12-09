@@ -19,19 +19,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
         try {
             // Fetch distance and estimated time from the server
-            const response = await fetch('http://localhost:3000/get-distance', {
+            const distanceResponse = await fetch('http://localhost:3000/get-distance', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(distanceData),
             });
 
-            if (!response.ok) {
+            if (!distanceResponse.ok) {
                 throw new Error('Failed to fetch distance data from the server');
             }
 
-            const data = await response.json();
-            const distance = data.distance;
-            const estimatedTime = data.estimatedTime;
+            const distanceDataResponse = await distanceResponse.json();
+            const distance = distanceDataResponse.distance;
+            const estimatedTime = distanceDataResponse.estimatedTime;
 
             // Prepare email data
             const emailData = {
@@ -50,6 +50,39 @@ document.addEventListener('DOMContentLoaded', function () {
             const emailResponse = await emailjs.send('service_ge2rvyx', 'template_b0xlp7x', emailData);
             console.log('Email sent successfully!', emailResponse);
 
+            // Save form data to MongoDB via the server
+            const saveData = {
+                senderName,
+                senderEmail,
+                senderZip,
+                recipientName,
+                recipientEmail,
+                recipientZip,
+                letterContent,
+                distance,
+                estimatedTime,
+            };
+
+            // const saveResponse = await fetch('/save-letter', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify(saveData),
+            // });
+
+            const saveResponse = await fetch('http://localhost:3000/save-letter', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(saveData),
+            });
+
+
+            if (!saveResponse.ok) {
+                throw new Error('Failed to save letter to the database');
+            }
+
+            const saveResult = await saveResponse.json();
+            console.log('Letter saved successfully in MongoDB!', saveResult);
+
             // Redirect to confirmation page with query parameters
             window.location.href = `confirmation.html?senderName=${encodeURIComponent(senderName)}&recipientName=${encodeURIComponent(recipientName)}&recipientEmail=${encodeURIComponent(recipientEmail)}&distance=${encodeURIComponent(distance)}&estimatedTime=${encodeURIComponent(estimatedTime)}`;
         } catch (error) {
@@ -58,6 +91,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
 
 
 
