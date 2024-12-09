@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mailbox</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Global Navigation Bar -->
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <a href="index.html">YourLogo</a>
+        </div>
+        <div class="navbar-links">
+            <a href="send-letter.html">Send a Letter</a>
+            <a href="mailbox.html">Mailbox</a>
+        </div>
+    </nav>
+
+    <header>
+        <h1>Mailbox</h1>
+        <!-- Form to enter UUID -->
+        <section id="uuid-form-section">
+            <h2>Enter your UUID to access your mailbox</h2>
+            <form id="uuid-form">
+                <label for="uuid-input">UUID:</label>
+                <input type="text" id="uuid-input" name="uuid" required>
+                <button type="submit">Access Mailbox</button>
+            </form>
+        </section>
+
+        <!-- Button to refresh the mailbox -->
+        <button id="refreshLetters" style="display: none;">Refresh Letters</button>
+    </header>
+
+    <section id="letters-list">
+        <p>Loading letters...</p>
+    </section>
+
+    <script src="mail-box.js"></script>
+</body>
+
+</html>

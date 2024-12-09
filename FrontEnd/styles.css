@@ -144,6 +144,22 @@ textarea {
     background-color: #45a049;
 }
 
+
+#letters-list {
+    margin-top: 20px;
+}
+
+.letter {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+#letter-details {
+    margin-top: 20px;
+}
+
 /* Media Query for Smaller Screens */
 @media screen and (max-width: 600px) {
     .navbar {
