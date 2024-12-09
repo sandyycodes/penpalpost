@@ -58,16 +58,12 @@
 //         window.location.href = `view-letter.html?id=${letterId}`;
 //     };
 // });
-
-
-
 document.addEventListener('DOMContentLoaded', () => {
-    let userUUID = null; // To store the user's UUID
+    let userUUID = localStorage.getItem('userUUID'); // Get the UUID from localStorage if it exists
 
     // Fetch letters based on UUID
     const fetchLetters = async (uuid) => {
         try {
-            // Update endpoint to /fetch-letters-by-uuid
             const response = await fetch(`http://localhost:3000/fetch-letters-by-uuid?uuid=${uuid}`);
             if (response.ok) {
                 const letters = await response.json();
@@ -100,10 +96,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    // Fetch letters if UUID exists
+    if (userUUID) {
+        fetchLetters(userUUID);
+    }
+
     // Handle form submission
     document.getElementById('uuid-form').addEventListener('submit', event => {
         event.preventDefault();
         userUUID = document.getElementById('uuid-input').value;
+        localStorage.setItem('userUUID', userUUID); // Store UUID in localStorage
         fetchLetters(userUUID);
 
         // Show the refresh button after submitting the UUID

@@ -115,13 +115,13 @@ textarea {
 #confirmationMessage {
     background-color: #ffffff;
     padding: 20px;
+    margin-top: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
     max-width: 600px;
-    text-align: center;
-    margin-top: 20px; /* Margin to prevent overlap with navbar */
+    margin: 20px auto;
 }
+
 
 #confirmationMessage h2 {
     margin-bottom: 20px;
@@ -144,7 +144,6 @@ textarea {
     background-color: #45a049;
 }
 
-
 #letters-list {
     margin-top: 20px;
 }
@@ -160,6 +159,116 @@ textarea {
     margin-top: 20px;
 }
 
+/* Homepage Layout Styles */
+
+/* Section 1: Opening Section */
+.homepage-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    padding: 40px;
+    margin-top: 100px; /* Adjust for navbar */
+}
+
+.homepage-container img {
+    width: 45%;
+    height: auto;
+    border-radius: 12px;
+}
+
+.homepage-container h1 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.homepage-container p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.homepage-container a {
+    font-size: 18px;
+    text-decoration: none;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+}
+
+.homepage-container a:hover {
+    background-color: #45a049;
+}
+
+/* Styling for the Learn More button */
+.learn-more-btn {
+    font-size: 18px;
+    text-decoration: none;
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    display: inline-block; /* Ensures button behaves like an inline element */
+    margin-top: 20px; /* Adds space between the paragraph and the button */
+}
+
+.learn-more-btn:hover {
+    background-color: #45a049;
+}
+
+
+/* Section 2: Why Pen Pal Post Section */
+.why-pen-pal-post {
+    padding: 40px;
+    text-align: center;
+    background-color: white;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.why-pen-pal-post h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.why-pen-pal-post p {
+    font-size: 18px;
+    margin-bottom: 40px;
+}
+
+.columns-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.column {
+    width: 30%;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.column img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+.column h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.column p {
+    font-size: 16px;
+}
+
 /* Media Query for Smaller Screens */
 @media screen and (max-width: 600px) {
     .navbar {
@@ -171,10 +280,30 @@ textarea {
     }
 
     .navbar-links {
-        gap: 8px; /* Slightly reduce gap for smaller screens */
+        gap: 8px;
     }
 
     .navbar-links a {
         font-size: 16px;
+    }
+
+    .homepage-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .homepage-container img {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+
+    .columns-container {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .column {
+        width: 100%;
     }
 }
