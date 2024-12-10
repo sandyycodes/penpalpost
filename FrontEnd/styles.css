@@ -221,21 +221,12 @@ textarea {
     max-width: 1200px;
     padding: 40px;
     margin-top: 100px;
-    gap: 40px; /* Add space between the image and text elements */
 }
 
 .homepage-container img {
     width: 45%;
     height: auto;
     border-radius: 12px;
-}
-
-.homepage-container .homepage-text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-left: 20px; /* Add left padding to move text to the right */
-    max-width: 50%; /* Ensure text doesn't overflow */
 }
 
 .homepage-container h1 {
@@ -263,11 +254,6 @@ textarea {
 }
 
 
-.homepage-container a:hover {
-    background-color: #D95B6B; /* Soft Red */
-}
-
-
 
 /* Styling for the Learn More button */
 .learn-more-btn {
@@ -279,9 +265,6 @@ textarea {
     border-radius: 8px;
     display: inline-block;
     margin-top: 20px;
-    max-width: 20%;
-    text-align: center;
-    align-self:flex-start;
 }
 
 .learn-more-btn:hover {
