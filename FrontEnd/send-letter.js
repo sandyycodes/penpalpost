@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Initialize EmailJS
-    emailjs.init("IWYidU1PxGPPkjelA");
+    emailjs.init("uNI2cxUcdxtTH7ij3");
 
     // Form submission handler
     document.getElementById('sendLetterForm').addEventListener('submit', async function (event) {
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
             };
 
             // Send email via EmailJS
-            const emailResponse = await emailjs.send('service_ge2rvyx', 'template_b0xlp7x', emailData);
+            const emailResponse = await emailjs.send('service_vxxz8dc', 'template_u24ohpm', emailData);
             console.log('Email sent successfully!', emailResponse);
 
             // Prepare data to save to MongoDB
