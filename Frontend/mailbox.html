@@ -20,21 +20,40 @@
         </div>
     </nav>
 
-    <header>
-        <h1>Mailbox</h1>
+    <header class="mailbox-header" style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; text-align: center; color: #1e7696;">
+        <h1 style="margin-bottom: 20px; color: #1e7696;">Mailbox</h1>
+    
         <!-- Form to enter UUID -->
-        <section id="uuid-form-section">
-            <h2>Enter your UUID to access your mailbox</h2>
-            <form id="uuid-form">
-                <label for="uuid-input">UUID:</label>
-                <input type="text" id="uuid-input" name="uuid" required>
-                <button type="submit">Access Mailbox</button>
+        <section id="uuid-form-section" class="mailbox-form" style="display: flex; flex-direction: column; align-items: center; justify-content: center; color: #1e7696;">
+            <h2 style="margin-bottom: 10px; color: #1e7696;">Access Code:</h2>
+            <form id="uuid-form" style="display: flex; flex-direction: column; align-items: center;">
+                <label for="uuid-input" style="margin-bottom: 5px; color: #1e7696;">This should've been sent to your email inbox.</label>
+                <input type="text" id="uuid-input" name="uuid" required style="width: 100%; margin-bottom: 10px; padding: 5px; text-align: center; border: 1px solid #1e7696; color: #1e7696;">
+                <button type="submit" class="hoverable" style="padding: 10px 20px; background-color: #1e7696; color: white; border: none; cursor: pointer;">Open Mailbox</button>
             </form>
         </section>
 
-        <!-- Button to refresh the mailbox -->
-        <button id="refreshLetters" style="display: none;">Refresh Letters</button>
-    </header>
+    <!-- Button to refresh the mailbox -->
+    <button id="refreshLetters" style="display: flex; flex-direction: column; margin-top: 50px; padding: 10px 20px;">Refresh Letters</button>
+</header>
+
+<script>
+    // Add hover effect to buttons with the class 'hoverable'
+    const hoverableButtons = document.querySelectorAll('.hoverable');
+
+    hoverableButtons.forEach(button => {
+        button.addEventListener('mouseover', () => {
+            button.style.backgroundColor = '#D95B6B';
+            button.style.color = 'white';
+        });
+
+        button.addEventListener('mouseout', () => {
+            button.style.backgroundColor = '#1e7696';
+            button.style.color = 'white';
+        });
+    });
+</script>
+
 
     <section id="letters-list">
         <p>Loading letters...</p>

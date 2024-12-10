@@ -10,9 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 const letterDetails = document.getElementById('letter-details');
                 letterDetails.innerHTML = `
                     <h3>From: ${letter.senderName}</h3>
-                    <h4>To: ${letter.recipientName}</h4>
-                    <p><strong>Content:</strong> ${letter.letterContent}</p>
-                    <p><strong>Distance:</strong> ${letter.distance}</p>
+                    <h3>To: ${letter.recipientName}</h3>
+                    <p>${letter.letterContent}</p>
+                    <p><strong>How Far Your Letter Has Traveled:</strong> ${letter.distance}</p>
                     <p><strong>Estimated Time:</strong> ${letter.estimatedTime}</p>
                 `;
             } else {

@@ -1,19 +1,20 @@
 /* General Body Styles */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
+    padding-top: 60px;
     display: flex;
     flex-direction: column;
     align-items: center;
     height: 100vh;
+    background-color: #FFFFFF; /* White */
 }
 
 /* Global Navigation Bar Styles */
 .navbar {
     width: 100%;
-    background-color: #f4f4f4; 
+    background-color: #FFFFFF; /* White */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -22,14 +23,15 @@ body {
     top: 0;
     left: 0;
     z-index: 1000;
-    box-sizing: border-box; /* Ensures padding is included in width calculation */
-    white-space: nowrap; /* Prevents wrapping of content */
-    overflow: hidden; /* Prevents overflow issues */
+    box-sizing: border-box;
+    white-space: nowrap;
+    overflow: hidden;
+    border-bottom: 2px solid #D8D8D8; /* Light gray border for separation */
 }
 
 /* Navbar Logo */
 .navbar-logo a {
-    color: rgb(0, 0, 0);
+    color: #1e7696; /* Soft Blue */
     font-size: 24px;
     text-decoration: none;
     font-weight: bold;
@@ -38,43 +40,89 @@ body {
 /* Navbar Links Container */
 .navbar-links {
     display: flex;
-    gap: 50px; /* Adjusted gap to make "Send a Letter" closer to "Mailbox" */
+    gap: 50px;
     justify-content: flex-end;
-    flex-wrap: nowrap; /* Prevents links from wrapping to the next line */
+    flex-wrap: nowrap;
     width: 100%;
     box-sizing: border-box;
 }
 
 /* Navbar Links */
 .navbar-links a {
-    color: rgb(0, 0, 0);
+    color: #1e7696; /* Soft Blue */
     text-decoration: none;
-    font-size: 18px;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .navbar-links a:hover {
     text-decoration: underline;
+    color: #D95B6B; /* Soft Red */
 }
 
-/* Adjust body padding to account for the fixed navbar */
-body {
-    padding-top: 60px; /* Adjust according to navbar height */
+
+/* Header Styles */
+header {
+    width: 100%;
+    padding: 0 20px;
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
-/* Form Container Styles */
+header h1 {
+    margin: 0;
+    font-size: 36px;
+    color: #1e7696; /* Soft Blue */
+}
+
+/* Back Button */
+#backBtn {
+    background-color: #1e7696; /* Soft Blue */
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 4px;
+    margin-top: 20px;
+    border: none;
+}
+
+#backBtn:hover {
+    background-color: #D95B6B; /* Soft Red */
+}
+
+/* Letter Details Styles */
+#letter-details {
+    background-color: #FFFFFF; /* White */
+    padding: 20px;
+    margin-top: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #D8D8D8; /* Gray border */
+}
+
+/* Form Styles */
 .form-container {
-    background-color: #ffffff;
+    background-color: #FFFFFF; /* White */
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 600px;
-    margin-top: 20px; /* Add margin to prevent overlap with navbar */
+    margin-top: 20px;
+    border: 1px solid #D8D8D8; /* Gray border */
 }
 
 .form-container h1 {
     text-align: center;
     margin-bottom: 20px;
+    color: #1e7696; /* Soft Blue */
 }
 
 form {
@@ -85,25 +133,26 @@ form {
 
 label {
     font-weight: bold;
+    color: #1e7696; /* Soft Blue */
 }
 
 input, textarea, button {
     padding: 10px;
     margin: 5px 0;
-    border: 1px solid #ccc;
+    border: 1px solid #D8D8D8; /* Gray border */
     border-radius: 4px;
     font-size: 16px;
 }
 
 button {
-    background-color: #4CAF50;
+    background-color: #1e7696; /* Soft Blue */
     color: white;
     cursor: pointer;
     font-size: 16px;
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #D95B6B; /* Soft Red */
 }
 
 textarea {
@@ -113,18 +162,19 @@ textarea {
 
 /* Confirmation Page Styles */
 #confirmationMessage {
-    background-color: #ffffff;
+    background-color: #FFFFFF; /* White */
     padding: 20px;
     margin-top: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     max-width: 600px;
     margin: 20px auto;
+    border: 1px solid #D8D8D8; /* Gray border */
 }
-
 
 #confirmationMessage h2 {
     margin-bottom: 20px;
+    color: #1e7696; /* Soft Blue */
 }
 
 /* "Send Another Letter" Button */
@@ -132,7 +182,7 @@ textarea {
     display: inline-block;
     margin-top: 20px;
     padding: 10px 20px;
-    background-color: #4CAF50;
+    background-color: #1e7696; /* Soft Blue */
     color: white;
     border: none;
     cursor: pointer;
@@ -141,7 +191,7 @@ textarea {
 }
 
 .send-another-btn:hover {
-    background-color: #45a049;
+    background-color: #D95B6B; /* Soft Red */
 }
 
 #letters-list {
@@ -149,20 +199,20 @@ textarea {
 }
 
 .letter {
-    border: 1px solid #ddd;
+    border: 1px solid #D8D8D8; /* Gray border */
     padding: 10px;
     margin-bottom: 10px;
     cursor: pointer;
+    background-color: #F7F7F7; /* Ivory */
 }
 
-#letter-details {
-    margin-top: 20px;
+.letter:hover {
+    background-color: #EDEDED; /* Light gray */
 }
 
 /* Homepage Layout Styles */
-
-/* Section 1: Opening Section */
 .homepage-container {
+    background: transparent; /* Ensure no background color is set */
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -170,7 +220,7 @@ textarea {
     width: 100%;
     max-width: 1200px;
     padding: 40px;
-    margin-top: 100px; /* Adjust for navbar */
+    margin-top: 100px;
 }
 
 .homepage-container img {
@@ -182,6 +232,7 @@ textarea {
 .homepage-container h1 {
     font-size: 36px;
     margin-bottom: 10px;
+    color: #1e7696; /* Soft Blue */
 }
 
 .homepage-container p {
@@ -192,38 +243,39 @@ textarea {
 .homepage-container a {
     font-size: 18px;
     text-decoration: none;
-    background-color: #4CAF50;
+    background-color: #1e7696; /* Soft Blue */
     color: white;
     padding: 10px 20px;
     border-radius: 8px;
 }
 
 .homepage-container a:hover {
-    background-color: #45a049;
+    background-color: #D95B6B; /* Soft Red */
 }
+
+
 
 /* Styling for the Learn More button */
 .learn-more-btn {
     font-size: 18px;
     text-decoration: none;
-    background-color: #4CAF50;
+    background-color: #1e7696; /* Soft Blue */
     color: white;
     padding: 10px 20px;
     border-radius: 8px;
-    display: inline-block; /* Ensures button behaves like an inline element */
-    margin-top: 20px; /* Adds space between the paragraph and the button */
+    display: inline-block;
+    margin-top: 20px;
 }
 
 .learn-more-btn:hover {
-    background-color: #45a049;
+    background-color: #D95B6B; /* Soft Red */
 }
-
 
 /* Section 2: Why Pen Pal Post Section */
 .why-pen-pal-post {
     padding: 40px;
     text-align: center;
-    background-color: white;
+    background-color: #FFFFFF; /* White */
     width: 100%;
     box-sizing: border-box;
 }
@@ -231,6 +283,7 @@ textarea {
 .why-pen-pal-post h2 {
     font-size: 32px;
     margin-bottom: 20px;
+    color: #1e7696; /* Soft Blue */
 }
 
 .why-pen-pal-post p {
@@ -242,15 +295,17 @@ textarea {
     display: flex;
     justify-content: space-between;
     gap: 30px;
+    object-fit: cover;
 }
 
 .column {
-    width: 30%;
-    background-color: #ffffff;
+    width: 35%;
+    background-color: #FFFFFF; /* White */
     padding: 20px;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
+    border: 1px solid #D8D8D8; /* Gray border */
 }
 
 .column img {
@@ -263,10 +318,88 @@ textarea {
 .column h3 {
     font-size: 24px;
     margin-bottom: 10px;
+    color: #1e7696; /* Soft Blue */
 }
 
 .column p {
     font-size: 16px;
+}
+
+/* Styles for the Mailbox Page Header */
+.mailbox-header {
+    width: 100%;
+    padding: 0 20px;
+    margin-top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.mailbox-header h1 {
+    margin: 0;
+    font-size: 36px;
+    color: #4F5D75;
+}
+
+/* Form Styles Specific to Mailbox */
+.mailbox-form {
+    background-color: #FFFFFF;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    margin-top: 20px;
+    border: 1px solid #D8D8D8;
+}
+
+.mailbox-form h2 {
+    margin-bottom: 10px;
+    color: #4F5D75;
+}
+
+.mailbox-form label {
+    font-weight: bold;
+    color: #4F5D75;
+}
+
+.mailbox-form input {
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #D8D8D8;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.mailbox-form button {
+    background-color: #4F5D75;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 4px;
+    border: none;
+}
+
+.mailbox-form button:hover {
+    background-color: #D95B6B;
+}
+
+/* General Letter List Styling */
+#letters-list {
+    margin-top: 20px;
+}
+
+.letter {
+    border: 1px solid #D8D8D8;
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    background-color: #F7F7F7;
+}
+
+.letter:hover {
+    background-color: #EDEDED;
 }
 
 /* Media Query for Smaller Screens */
