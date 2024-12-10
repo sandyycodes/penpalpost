@@ -8,13 +8,12 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script type="text/javascript">
         (function () {
-            emailjs.init("uNI2cxUcdxtTH7ij3");
+            emailjs.init("IWYidU1PxGPPkjelA");
         })();
     </script>
 </head>
 
-<!--body--> <body style="background: url('https://img.freepik.com/premium-photo/old-grunge-vintage-aged-paper-texture-background_271317-2058.jpg') no-repeat center center fixed; background-size: cover;">
-
+<body>
     <!-- Global Navigation Bar -->
     <nav class="navbar">
         <div class="navbar-logo">
@@ -27,29 +26,30 @@
     </nav>
 
     <div class="form-container">
-        <h1>Send a Letter 💌</h1>
+        <h1>Send a Letter</h1>
         <form id="sendLetterForm" method="POST">
             <label for="senderName">Your Name:</label>
-            <input type="text" id="senderName" name="senderName" required placeholder="What's your name?">
+            <input type="text" id="senderName" name="senderName" required placeholder="Enter your name">
 
             <label for="senderEmail">Your Email:</label>
-            <input type="email" id="senderEmail" name="senderEmail" required placeholder="How can we reach you?">
+            <input type="email" id="senderEmail" name="senderEmail" required placeholder="Enter your email">
 
             <label for="senderZip">Your Zip Code:</label>
-            <input type="text" id="senderZip" name="senderZip" required placeholder="Where are you writing from?">
+            <input type="text" id="senderZip" name="senderZip" required placeholder="Enter your zip code">
 
             <label for="recipientName">Recipient's Name:</label>
-            <input type="text" id="recipientName" name="recipientName" required placeholder="Who are you writing to?">
+            <input type="text" id="recipientName" name="recipientName" required placeholder="Enter recipient's name">
 
             <label for="recipientEmail">Recipient's Email:</label>
-            <input type="email" id="recipientEmail" name="recipientEmail" required placeholder="How can we reach them?">
+            <input type="email" id="recipientEmail" name="recipientEmail" required
+                placeholder="Enter recipient's email">
 
             <label for="recipientZip">Recipient's Zip Code:</label>
-            <input type="text" id="recipientZip" name="recipientZip" required placeholder="Where is the recipient located?">
+            <input type="text" id="recipientZip" name="recipientZip" required placeholder="Enter recipient's zip code">
 
             <label for="letterContent">Your Letter:</label>
             <textarea id="letterContent" name="letterContent" required
-                placeholder="Dear [recipient name], ..."></textarea>
+                placeholder="Write something nice here..."></textarea>
 
             <button type="submit">Send Letter</button>
         </form>
@@ -59,9 +59,3 @@
 
     <script src="send-letter.js"></script>
 </body>
-
-
-
-
-
-
