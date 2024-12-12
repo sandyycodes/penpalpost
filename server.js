@@ -18,7 +18,7 @@ let usersCollection;
 // Middleware
 app.use(bodyParser.json());
 app.use(cors());
-app.use(express.static(path.join(__dirname, 'Frontend')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Google Maps API key
 const googleMapsApiKey = 'AIzaSyD9lpBtU1XK3TCTgEsBqL70XCKRrCBcnEA';
@@ -39,9 +39,9 @@ async function initializeDatabase() {
 initializeDatabase();
 
 // Serve static files
-app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'Frontend', 'index.html')));
-app.get('/send-letter', (req, res) => res.sendFile(path.join(__dirname, 'Frontend', 'send-letter.html')));
-app.get('/mailbox', (req, res) => res.sendFile(path.join(__dirname, 'Frontend', 'mailbox.html')));
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, 'public', 'index.html')));
+app.get('/send-letter', (req, res) => res.sendFile(path.join(__dirname, 'public', 'send-letter.html')));
+app.get('/mailbox', (req, res) => res.sendFile(path.join(__dirname, 'public', 'mailbox.html')));
 
 // Calculate distance and estimated time
 app.post('/get-distance', async (req, res) => {
@@ -107,38 +107,6 @@ app.post('/save-letter', async (req, res) => {
 // Fetch letters
 const { ObjectId } = require('mongodb');  // Import ObjectId
 
-// Fetch a single letter by ID
-// app.get('/get-letter', async (req, res) => {
-//     const { id } = req.query;  // Get the id from the query string
-
-//     if (!id) {
-//         return res.status(400).json({ error: 'ID is required' });
-//     }
-
-//     try {
-//         // Convert string to ObjectId
-//         const letterId = new ObjectId(id);
-
-//         // Find the letter by its _id
-//         const letter = await collection.findOne({ _id: letterId });
-
-//         if (!letter) {
-//             return res.status(404).json({ error: 'Letter not found' });
-//         }
-
-//         // Return the letter details
-//         res.status(200).json({
-//             senderName: letter.senderName,
-//             recipientName: letter.recipientName,
-//             letterContent: letter.letterContent,
-//             distance: letter.distance,
-//             estimatedTime: letter.estimatedTime
-//         });
-//     } catch (error) {
-//         console.error('Error fetching letter:', error);
-//         res.status(500).json({ error: 'Error fetching letter' });
-//     }
-// });
 
 // Fetch letters for a user by UUID (for mailbox view)
 app.get('/fetch-letters-by-uuid', async (req, res) => {
@@ -190,8 +158,6 @@ app.get('/fetch-letter-by-id', async (req, res) => {
         res.status(500).json({ error: 'Error fetching letter' });
     }
 });
-
-
 
 
 

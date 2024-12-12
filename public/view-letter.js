@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const params = new URLSearchParams(window.location.search);
-    const letterId = params.get('id');  // Get the letter ID from the query string
+    const letterId = params.get('id');  
 
     const fetchLetter = async () => {
         try {
@@ -25,11 +25,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     fetchLetter();
 
-    // Go back to the mailbox
+    // Go back to mailbox
     document.getElementById('backBtn').addEventListener('click', () => {
         const userUUID = localStorage.getItem('userUUID');
         if (userUUID) {
-            window.location.href = `mailbox.html?uuid=${userUUID}`; // Pass UUID in the URL when navigating back
+            window.location.href = `mailbox.html?uuid=${userUUID}`; 
         } else {
             window.location.href = 'mailbox.html'; // Fallback if UUID is not found
         }
