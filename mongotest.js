@@ -1,7 +1,7 @@
 const { MongoClient } = require('mongodb');
 
 // Replace the placeholder with your actual MongoDB connection string
-const uri = "mongodb+srv://sandytan615:yuXi0RqhJJN0c4xI@penpal-post.0qsxr.mongodb.net/?retryWrites=true&w=majority&appName=Penpal-Post";
+const uri = process.env.MONGODB_URI;
 
 async function main() {
     // Create a new MongoClient

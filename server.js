@@ -5,12 +5,13 @@ const cors = require('cors');
 const path = require('path');
 const { MongoClient } = require('mongodb');
 const { v4: uuidv4 } = require('uuid');
+require('dotenv').config();  
 
 const app = express();
 const port = 3000;
 
-// MongoDB connection URI
-const uri = 'mongodb+srv://sandytan615:yuXi0RqhJJN0c4xI@penpal-post.0qsxr.mongodb.net/?retryWrites=true&w=majority&appName=Penpal-Post';
+// MongoDB connection URI from .env file
+const uri = process.env.MONGODB_URI;
 const client = new MongoClient(uri);
 let collection;
 let usersCollection;
@@ -20,8 +21,8 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Google Maps API key
-const googleMapsApiKey = 'AIzaSyD9lpBtU1XK3TCTgEsBqL70XCKRrCBcnEA';
+// Google Maps API key from .env file
+const googleMapsApiKey = process.env.GOOGLE_MAPS_API_KEY;
 
 // Initialize MongoDB connection and set up collections
 async function initializeDatabase() {
@@ -105,8 +106,7 @@ app.post('/save-letter', async (req, res) => {
 });
 
 // Fetch letters
-const { ObjectId } = require('mongodb');  // Import ObjectId
-
+const { ObjectId } = require('mongodb'); 
 
 // Fetch letters for a user by UUID (for mailbox view)
 app.get('/fetch-letters-by-uuid', async (req, res) => {
@@ -134,7 +134,7 @@ app.get('/fetch-letters-by-uuid', async (req, res) => {
 
 // Fetch a single letter by ObjectId (for view-letter page)
 app.get('/fetch-letter-by-id', async (req, res) => {
-    const { id } = req.query;  // Get the letter's ObjectId from the query string
+    const { id } = req.query;  
 
     if (!id) {
         return res.status(400).json({ error: 'ID is required' });
@@ -159,8 +159,4 @@ app.get('/fetch-letter-by-id', async (req, res) => {
     }
 });
 
-
-
 app.listen(port, () => console.log(`Server is running on http://localhost:${port}`));
-
-
